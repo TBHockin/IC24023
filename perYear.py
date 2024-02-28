@@ -35,8 +35,20 @@ gOnes = [gOne1819, gOne1920, gOne2122, gOne2223]
 
 #save these as value counts somehow
 
-byyearDF = pd.DataFrame(yearlist)
-print(byyearDF)
+frame1819 = gOne1819.value_counts().reset_index().rename(columns={"index": "value", 0: "count"})
+frame1920 = gOne1920.value_counts().reset_index().rename(columns={"index": "value", 0: "count"})
+frame2122 = gOne2122.value_counts().reset_index().rename(columns={"index": "value", 0: "count"})
+frame2223 = gOne2223.value_counts().reset_index().rename(columns={"index": "value", 0: "count"})
 
+frameAllyears = pd.concat([frame1819,frame1920,frame2122,frame2223],ignore_index=True).reset_index()
 
+#separate it into reg and cert data frames
+#ovrAllyears = frameAllyears[frameAllyears['Form-Type'] == 'Registration' | 'Certification']
+#certAllyears = frameAllyears[frameAllyears['Form-Type'] == 'Certification']
 
+#now visualize the effectiveness of GreenTerp Advertising to Incoming Classes over the Acedemic Years available
+barboth = px.histogram(frameAllyears, x="AY", y="count",
+             color='Form-Type', barmode='group',
+             title='Grade 1 Involvement Over the Years')
+
+barboth.show()
