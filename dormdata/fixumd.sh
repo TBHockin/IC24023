@@ -1,0 +1,1 @@
+sed -E s/'\b([a-z]{3,6}):/"\1":/' umd-building-gis.json > umdbuild.json

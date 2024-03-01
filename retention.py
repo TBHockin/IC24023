@@ -16,7 +16,7 @@ repFrame = repeated.reset_index().rename(columns={"index": "value", 0: "count"})
 
 #check for the presense of multiple years for each id with more than one count
 repFrame = repFrame[repFrame['UniqueID'] > 1] #limit it to only people who did it more than once
-
+print(repFrame)
 #check for multiple years and pare down df based on those who have multiple years
 fullrepFrame = idFrame[idFrame['UniqueID'].isin(repFrame['value'])]
 
@@ -28,6 +28,6 @@ noDupes = fullrepFrame.drop_duplicates(subset=['UniqueID','AY'])
 # make a data frame out of this stuff of noDupes
 noDupeCount = noDupes['UniqueID'].value_counts().reset_index().rename(columns={"index": "value", 0: "count"})
 pieDF = noDupeCount['UniqueID'].value_counts().reset_index().rename(columns={"index": "value", 0: "count"})
-
-fig = px.pie(pieDF, values='UniqueID', names='value', title='Student Retention')
+print(pieDF)
+fig = px.pie(pieDF, values='UniqueID', names='value', title='Student Retention In Years')
 fig.show()
