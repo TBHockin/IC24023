@@ -30,4 +30,6 @@ noDupeCount = noDupes['UniqueID'].value_counts().reset_index().rename(columns={"
 pieDF = noDupeCount['UniqueID'].value_counts().reset_index().rename(columns={"index": "value", 0: "count"})
 print(pieDF)
 fig = px.pie(pieDF, values='UniqueID', names='value', title='Student Retention In Years')
+fig.update_layout({'paper_bgcolor' : 'rgba(0, 0, 0, 0)','plot_bgcolor' : 'rgba(0, 0, 0, 0)'})
+
 fig.show()
