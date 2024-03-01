@@ -23,6 +23,11 @@ fullrepFrame = idFrame[idFrame['UniqueID'].isin(repFrame['value'])]
 #now parse the df down to just those with multiple years:
     
 noDupes = fullrepFrame.drop_duplicates(subset=['UniqueID','AY'])
-print(noDupes['UniqueID'].value_counts()) #displays how many years each student participated in the program (whether for registration or certification)
 
 #now, show what percent of people did how many years of participation
+# make a data frame out of this stuff of noDupes
+noDupeCount = noDupes['UniqueID'].value_counts().reset_index().rename(columns={"index": "value", 0: "count"})
+pieDF = noDupeCount['UniqueID'].value_counts().reset_index().rename(columns={"index": "value", 0: "count"})
+
+fig = px.pie(pieDF, values='UniqueID', names='value', title='Student Retention')
+fig.show()
