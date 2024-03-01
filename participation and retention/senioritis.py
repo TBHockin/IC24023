@@ -39,5 +39,6 @@ fig = px.pie(countDF, values='Certification', names='Grade', title='Certificatio
 fig.show()
 
 regfig = fig = px.pie(countDF, values='Registration', names='Grade', title='Registration By Grade (All Years)')
+regfig.update_layout({'paper_bgcolor' : 'rgba(0, 0, 0, 0)','plot_bgcolor' : 'rgba(0, 0, 0, 0)'})
 regfig.show()
 

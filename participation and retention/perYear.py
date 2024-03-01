@@ -51,4 +51,5 @@ barboth = px.histogram(frameAllyears, x="AY", y="count",
              color='Form-Type', barmode='group',
              title='Grade 1 Involvement Over the Years')
 
+
 barboth.show()
